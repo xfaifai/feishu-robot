@@ -1,0 +1,29 @@
+{
+    "name": "xfaifai/feishu-robot",
+    "type": "library",
+    "description": "A Tool For Sending Feishu Robot Message Quickly",
+    "license": "MIT",
+    "keywords": [
+        "feishu", "robot", "message", "send","php-feishu","robot","send","msg","message",
+        "php", "class", "api", "api-feishu", "feishu-sdk", "framework", "php-robot-library"
+    ],
+    "authors": [
+        {
+            "name": "xfaifai",
+            "email": "boy-alien@qq.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/xfaifai/feishu-robot/issues",
+        "forum": "https://github.com/xfaifai",
+        "source": "https://github.com/xfaifai/feishu-robot"
+    },
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xfaifai\\FeishuRobot\\": "src/"
+        }
+    }
+}
