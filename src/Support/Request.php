@@ -1,54 +1,22 @@
 <?php
 
-namespace Xfaifai\FeishuRobot\FeishuRobot;
+namespace Xfaifai\FeishuRobot\Support;
 
 /**
  * Author xfaifai
  * Class Request
- * @package xfaifai
+ * @package Xfaifai\FeishuRobot\Support
  */
 class Request {
     /**
-     * Notes: 执行发送
-     * @param array $config
-     * @param string $msg_type
-     * @param array $content
-     * @return mixed
-     */
-    public static function send(array $config, string $msg_type, array $content){
-        $timestamp = time();
-        $data = json_encode([
-            'timestamp' => $timestamp,
-            'sign' => self::makeSign($timestamp, $config['sign']),
-            'msg_type' => $msg_type,
-            'card' => json_encode($content,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE)
-        ],JSON_UNESCAPED_UNICODE);
-        $header = ['Content-Type: application/json; charset=utf-8'];
-        return self::doPost($config['url'], $data,100, $header);
-    }
-
-
-    /**
-     * Notes: HmacSHA256 算法计算签名
-     * @param string|null $time
-     * @param string|null $secret
-     * @return string
-     */
-    private static function makeSign(string|null $time = null, string|null $secret = null){
-        $timestamp = $time ? $time : time();
-        $string = "{$timestamp}\n{$secret}";
-        return base64_encode(hash_hmac('sha256',"", $string,true));
-    }
-
-    /**
-     * Notes: 发送post请求
+     * 发送post请求
      * @param string $url
      * @param string $data
      * @param int $timeout
      * @param array $header
-     * @return bool|string
+     * @return mixed
      */
-    private static function doPost(string $url, string $data, int $timeout = 10, array $header = []){
+    public static function doPost(string $url, string $data, int $timeout = 10, array $header = []){
         $curlObj = curl_init();
         $ssl = stripos($url,'https://') === 0 ? true : false;
         $options = [
@@ -80,7 +48,7 @@ class Request {
             $returnData = curl_error($curlObj);
         }
         curl_close($curlObj);
-        return $returnData;
+        return json_decode($returnData,true);
     }
 }
 
