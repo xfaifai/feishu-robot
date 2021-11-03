@@ -7,7 +7,8 @@ namespace Xfaifai\FeishuRobot\Support;
  * Class Request
  * @package Xfaifai\FeishuRobot\Support
  */
-class Request {
+class Request
+{
     /**
      * 发送post请求
      * @param string $url

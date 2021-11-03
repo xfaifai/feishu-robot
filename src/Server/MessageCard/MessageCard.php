@@ -9,7 +9,8 @@ use Xfaifai\FeishuRobot\Support\Request;
  * Class MessageCard
  * @package Xfaifai\FeishuRobot\Server
  */
-class MessageCard {
+class MessageCard
+{
     /**
      * 发送消息卡片
      * @param string $tenant_access_token

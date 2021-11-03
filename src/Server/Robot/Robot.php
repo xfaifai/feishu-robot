@@ -10,8 +10,8 @@ use Xfaifai\FeishuRobot\Support\Request;
  * Class Robot
  * @package Xfaifai\FeishuRobot\Server
  */
-class Robot {
-
+class Robot
+{
     /**
      * @var string 机器人通知地址
      */
